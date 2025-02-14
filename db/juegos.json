@@ -1,0 +1,95 @@
+
+    [
+      {
+        "id": 1,
+        "titulo": "The Legend of Zelda Breath Of the Wild",
+        "descripcion": "Un juego de aventura épico.",
+        "precio": 40,
+        "imagen": "./img/imagen1.jpg",
+        "plataforma": "Nintendo Switch",
+        "stock": 10
+      },
+      {
+        "id": 2,
+        "titulo": "Super Mario Odyssey",
+        "descripcion": "Un juego de plataformas.",
+        "precio": 40,
+        "imagen": "./img/imagen2.jpg",
+        "plataforma": "Nintendo Switch",
+        "stock": 15
+      },
+      {
+        "id": 3,
+        "titulo": "Minecraft",
+        "descripcion": "Explora y construye en un mundo infinito.",
+        "precio": 20,
+        "imagen": "./img/imagen3.jpg",
+        "plataforma": "Multiplataforma",
+        "stock": 30
+      },
+      {
+        "id": 4,
+        "titulo": "Call of Duty",
+        "descripcion": "Acción y disparos en primera persona.",
+        "precio": 40,
+        "imagen": "./img/imagen4.jpg",
+        "plataforma": "PlayStation, Xbox, PC",
+        "stock": 20
+      },
+      {
+        "id": 5,
+        "titulo": "EA Sports FC 25",
+        "descripcion": "El mejor simulador de fútbol.",
+        "precio": 50,
+        "imagen": "./img/imagen5.jpg",
+        "plataforma": "Multiplataforma",
+        "stock": 25
+      },
+      {
+        "id": 6,
+        "titulo": "Animal Crossing new horizons",
+        "descripcion": "Crea tu propia isla en este relajante juego.",
+        "precio": 25,
+        "imagen": "./img/imagen6.jpg",
+        "plataforma": "Nintendo Switch",
+        "stock": 12
+      },
+      {
+        "id": 7,
+        "titulo": "Fortnite Transformers Pack",
+        "descripcion": "Batalla campal con emocionantes partidas.",
+        "precio": 20,
+        "imagen": "./img/imagen7.jpg",
+        "plataforma": "Multiplataforma",
+        "stock": 50
+      },
+      {
+        "id": 8,
+        "titulo": "Among Us",
+        "descripcion": "Descubre al impostor en este juego social.",
+        "precio": 5,
+        "imagen": "./img/imagen8.jpg",
+        "plataforma": "Multiplataforma",
+        "stock": 40
+      },
+      {
+        "id": 9,
+        "titulo": "Hollow Knight",
+        "descripcion": "Explora un mundo oscuro y lleno de secretos.",
+        "precio": 15,
+        "imagen": "./img/imagen9.jpg",
+        "plataforma": "Multiplataforma",
+        "stock": 18
+      },
+      {
+        "id": 10,
+        "titulo": "Red Dead Redemption 2",
+        "descripcion": "Un épico juego de mundo abierto en el viejo oeste.",
+        "precio": 60,
+        "imagen": "./img/imagen10.jpg",
+        "plataforma": "PlayStation, Xbox, PC",
+        "stock": 8
+      }
+    ]
+  
+  
