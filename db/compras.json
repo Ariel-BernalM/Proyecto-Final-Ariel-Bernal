@@ -1,0 +1,154 @@
+{
+  "compras": [
+    {
+      "nombre": "Ariel Bernal",
+      "email": "arbernal@gmail.com",
+      "direccion": "Pedro 456",
+      "tarjeta": "4444 4444 4444 4444",
+      "total": "$405.00",
+      "productos": [
+        {
+          "id": 4,
+          "titulo": "Call of Duty",
+          "descripcion": "Acción y disparos en primera persona.",
+          "precio": 40,
+          "imagen": "./img/imagen4.jpg",
+          "plataforma": "PlayStation, Xbox, PC",
+          "stock": 20,
+          "cantidad": 2
+        },
+        {
+          "id": 10,
+          "titulo": "Red Dead Redemption 2",
+          "descripcion": "Un épico juego de mundo abierto en el viejo oeste.",
+          "precio": 60,
+          "imagen": "./img/imagen10.jpg",
+          "plataforma": "PlayStation, Xbox, PC",
+          "stock": 8,
+          "cantidad": 1
+        },
+        {
+          "id": 11,
+          "titulo": "Halo Infinite",
+          "descripcion": "Una nueva aventura del Jefe Maestro.",
+          "precio": 50,
+          "imagen": "./img/imagen11.jpg",
+          "plataforma": "Xbox, PC",
+          "stock": 15,
+          "cantidad": 2
+        },
+        {
+          "id": 13,
+          "titulo": "Forza Horizon 5",
+          "descripcion": "Explora México en este increíble juego de carreras.",
+          "precio": 55,
+          "imagen": "./img/imagen13.jpg",
+          "plataforma": "Xbox, PC",
+          "stock": 20,
+          "cantidad": 3
+        }
+      ],
+      "fecha": "13-02-2025, 11:02:43 p. m."
+    },
+    {
+      "nombre": "Ariel Bernal",
+      "email": "arbernal97@gmail.com",
+      "direccion": "Olmenas 232",
+      "tarjeta": "1111 1111 1111 1111",
+      "total": "$760.00",
+      "productos": [
+        {
+          "id": 1,
+          "titulo": "The Legend of Zelda Breath Of the Wild",
+          "descripcion": "Un juego de aventura épico.",
+          "precio": 40,
+          "imagen": "./img/imagen1.jpg",
+          "plataforma": "Nintendo Switch",
+          "stock": 10,
+          "cantidad": 2
+        },
+        {
+          "id": 2,
+          "titulo": "Super Mario Odyssey",
+          "descripcion": "Un juego de plataformas.",
+          "precio": 40,
+          "imagen": "./img/imagen2.jpg",
+          "plataforma": "Nintendo Switch",
+          "stock": 15,
+          "cantidad": 2
+        },
+        {
+          "id": 6,
+          "titulo": "Animal Crossing new horizons",
+          "descripcion": "Crea tu propia isla en este relajante juego.",
+          "precio": 25,
+          "imagen": "./img/imagen6.jpg",
+          "plataforma": "Nintendo Switch",
+          "stock": 12,
+          "cantidad": 4
+        },
+        {
+          "id": 3,
+          "titulo": "Minecraft",
+          "descripcion": "Explora y construye en un mundo infinito.",
+          "precio": 20,
+          "imagen": "./img/imagen3.jpg",
+          "plataforma": "Multiplataforma",
+          "stock": 30,
+          "cantidad": 2
+        },
+        {
+          "id": 7,
+          "titulo": "Fortnite Transformers Pack",
+          "descripcion": "Batalla campal con emocionantes partidas.",
+          "precio": 20,
+          "imagen": "./img/imagen7.jpg",
+          "plataforma": "Multiplataforma",
+          "stock": 50,
+          "cantidad": 2
+        },
+        {
+          "id": 10,
+          "titulo": "Red Dead Redemption 2",
+          "descripcion": "Un épico juego de mundo abierto en el viejo oeste.",
+          "precio": 60,
+          "imagen": "./img/imagen10.jpg",
+          "plataforma": "PlayStation, Xbox, PC",
+          "stock": 8,
+          "cantidad": 1
+        },
+        {
+          "id": 12,
+          "titulo": "God of War Ragnarök",
+          "descripcion": "Kratos y Atreus enfrentan su destino en la mitología nórdica.",
+          "precio": 60,
+          "imagen": "./img/imagen12.jpg",
+          "plataforma": "PlayStation",
+          "stock": 10,
+          "cantidad": 3
+        },
+        {
+          "id": 13,
+          "titulo": "Forza Horizon 5",
+          "descripcion": "Explora México en este increíble juego de carreras.",
+          "precio": 55,
+          "imagen": "./img/imagen13.jpg",
+          "plataforma": "Xbox, PC",
+          "stock": 20,
+          "cantidad": 2
+        },
+        {
+          "id": 14,
+          "titulo": "Spider-Man 2",
+          "descripcion": "Vive la nueva aventura de Peter Parker y Miles Morales.",
+          "precio": 70,
+          "imagen": "./img/imagen14.jpg",
+          "plataforma": "PlayStation",
+          "stock": 16,
+          "cantidad": 1
+        }
+      ],
+      "fecha": "13-02-2025, 11:03:36 p. m."
+    }
+  ]
+}

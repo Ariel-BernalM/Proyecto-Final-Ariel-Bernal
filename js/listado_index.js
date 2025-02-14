@@ -1,8 +1,9 @@
+
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+let juegos = [];
 
-
-// Función para obtener los juegos desde localStorage o desde el archivo JSON
+/////////////////Obteniene el Listado de los juegos
 async function obtenerJuegos() {
     const juegosGuardados = localStorage.getItem("juegos");
 
@@ -16,7 +17,7 @@ async function obtenerJuegos() {
             }
 
             juegos = await response.json();
-            localStorage.setItem("juegos", JSON.stringify(juegos)); // Guardar en localStorage
+            localStorage.setItem("juegos", JSON.stringify(juegos)); 
         } catch (error) {
             Swal.fire({
                 title: "Error",
@@ -24,12 +25,13 @@ async function obtenerJuegos() {
                 icon: "error",
             });
             console.error("Hubo un problema al obtener los juegos:", error);
-            juegos = []; // Asegurar que `juegos` no quede indefinido
+            juegos = []; 
         }
     }
 
-    return juegos; // Retornar juegos para su uso en otras funciones
+    return juegos; 
 }
+
 
 async function listadoJuegosSwitch() {
     const juegos = await obtenerJuegos();
@@ -50,17 +52,16 @@ async function listadoJuegosSwitch() {
         const div = document.createElement("div");
         div.classList.add("swiper-slide");
 
-        // Verificar si la imagen es BLOB, BASE64, URL o LOCAL
-        let imagenSrc = "./img/default.jpg"; // Imagen por defecto
+        let imagenSrc = "./img/default.jpg"; 
         if (juego.imagen) {
             if (juego.imagen.startsWith("blob:")) {
-                imagenSrc = juego.imagen; // Imagen tipo Blob
+                imagenSrc = juego.imagen; 
             } else if (juego.imagen.startsWith("data:image")) {
-                imagenSrc = juego.imagen; // Imagen en Base64
+                imagenSrc = juego.imagen; 
             } else if (juego.imagen.startsWith("http")) {
-                imagenSrc = juego.imagen; // Imagen en URL externa
+                imagenSrc = juego.imagen; 
             } else {
-                imagenSrc = `./${juego.imagen}`; // Imagen en carpeta local
+                imagenSrc = `./${juego.imagen}`; 
             }
         }
 
@@ -90,14 +91,15 @@ async function listadoJuegosSwitch() {
         contenedor.appendChild(div);
     });
 
-    // Agregar eventos a los botones después de renderizar
-    document.querySelectorAll(".agregar-carrito").forEach(boton => {
+    // Agregar eventos solo a los botones dentro de este contenedor específico
+    contenedor.querySelectorAll(".agregar-carrito").forEach(boton => {
         boton.addEventListener("click", (e) => {
             const idJuego = e.target.getAttribute("data-id");
-            añadirAlCarrito(idJuego, juegos);
+            añadirAlCarrito(idJuego, juegosSwitch); // Ahora pasamos solo los juegos filtrados
         });
     });
 }
+
 
 
 
@@ -118,16 +120,16 @@ async function listadoJuegosMulti() {
     juegos.forEach(juego => {
         const div = document.createElement("div");
         div.classList.add("swiper-slide");
-        let imagenSrc = "./img/default.jpg"; // Imagen por defecto
+        let imagenSrc = "./img/default.jpg"; 
         if (juego.imagen) {
             if (juego.imagen.startsWith("blob:")) {
-                imagenSrc = juego.imagen; // Imagen tipo Blob
+                imagenSrc = juego.imagen;
             } else if (juego.imagen.startsWith("data:image")) {
-                imagenSrc = juego.imagen; // Imagen en Base64
+                imagenSrc = juego.imagen; 
             } else if (juego.imagen.startsWith("http")) {
-                imagenSrc = juego.imagen; // Imagen en URL externa
+                imagenSrc = juego.imagen; 
             } else {
-                imagenSrc = `./${juego.imagen}`; // Imagen en carpeta local
+                imagenSrc = `./${juego.imagen}`; 
             }
         }
 
@@ -157,7 +159,7 @@ async function listadoJuegosMulti() {
         contenedor.appendChild(div);
     });
 
-    // Agregar eventos a los botones después de renderizar
+    
     document.querySelectorAll(".agregar-carrito").forEach(boton => {
         boton.addEventListener("click", (e) => {
             const idJuego = e.target.getAttribute("data-id");
@@ -171,7 +173,7 @@ function añadirAlCarrito(idJuego, juegos) {
     if (!juego) return;
 
     const existe = carrito.find(item => item.id == idJuego);
-
+    
     if (existe) {
         existe.cantidad++;
     } else {
@@ -189,7 +191,7 @@ function añadirAlCarrito(idJuego, juegos) {
     
 }
 
-let juegos = [];
+
 
 async function obtenerYMostrarJuegos() {
     juegos = await obtenerJuegos();
@@ -200,7 +202,10 @@ async function mostrarJuegosFormato2(juegosFiltrados) {
     const contenedorJuegos = document.getElementById("listadoJuegosMultiFormato2");
 
     if (!contenedorJuegos) {
-        console.error("El contenedor no existe en esta vista.");
+        Swal.fire({
+            title: "No hay juegos",
+            icon: "info",
+        });
         return;
     }
 
@@ -209,7 +214,8 @@ async function mostrarJuegosFormato2(juegosFiltrados) {
    
     if (plataformaFiltro) {
         juegosFiltrados = juegosFiltrados.filter(juego => 
-            juego.plataforma.toLowerCase().includes(plataformaFiltro.toLowerCase())
+            juego.plataforma.split(", ").map(p => p.toLowerCase()).includes(plataformaFiltro.toLowerCase())
+
         );
     }
     
@@ -306,7 +312,7 @@ function aplicarFiltros() {
 
     if (!buscador || !selectPrecio || !selectNombre || !selectPlataforma) {
         console.warn("Algunos elementos de filtrado no existen en el DOM.");
-        return;  // Detiene la ejecución si falta algún elemento
+        return;  
     }
 
     const filtroNombre = buscador.value.toLowerCase();
@@ -362,9 +368,6 @@ if (buscador) buscador.addEventListener("input", aplicarFiltros);
 if (selectPrecio) selectPrecio.addEventListener("change", aplicarFiltros);
 if (selectNombre) selectNombre.addEventListener("change", aplicarFiltros);
 if (selectPlataforma) selectPlataforma.addEventListener("change", aplicarFiltros);
-
-
-document.addEventListener("DOMContentLoaded", obtenerYMostrarJuegos);
 
 
 

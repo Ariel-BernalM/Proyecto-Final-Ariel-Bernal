@@ -89,6 +89,42 @@
         "imagen": "./img/imagen10.jpg",
         "plataforma": "PlayStation, Xbox, PC",
         "stock": 8
+      },
+      {
+        "id": 11,
+        "titulo": "Halo Infinite",
+        "descripcion": "Una nueva aventura del Jefe Maestro.",
+        "precio": 50,
+        "imagen": "./img/imagen11.jpg",
+        "plataforma": "Xbox, PC",
+        "stock": 15
+      },
+      {
+        "id": 12,
+        "titulo": "God of War Ragnarök",
+        "descripcion": "Kratos y Atreus enfrentan su destino en la mitología nórdica.",
+        "precio": 60,
+        "imagen": "./img/imagen12.jpg",
+        "plataforma": "PlayStation",
+        "stock": 10
+      },
+      {
+        "id": 13,
+        "titulo": "Forza Horizon 5",
+        "descripcion": "Explora México en este increíble juego de carreras.",
+        "precio": 55,
+        "imagen": "./img/imagen13.jpg",
+        "plataforma": "Xbox, PC",
+        "stock": 20
+      },
+      {
+        "id": 14,
+        "titulo": "Spider-Man 2",
+        "descripcion": "Vive la nueva aventura de Peter Parker y Miles Morales.",
+        "precio": 70,
+        "imagen": "./img/imagen14.jpg",
+        "plataforma": "PlayStation",
+        "stock": 12
       }
     ]
   

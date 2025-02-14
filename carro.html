@@ -230,7 +230,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form id="formCompra" onsubmit="procesarCompra()"></form>
+            <form id="formCompra" onsubmit="procesarCompra(event)">
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre Completo</label>
               <input type="text" class="form-control" id="nombre" required>
@@ -251,8 +251,8 @@
               <label for="totalCompra" class="form-label">Total a Pagar</label>
               <input type="text" class="form-control" id="totalCompra" readonly>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Confirmar Pago</button>
-          </form>
+            <button id="confirmarPago" class="btn btn-primary">Confirmar Pago</button>
+        </form>
         </div>
       </div>
     </div>

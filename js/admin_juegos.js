@@ -1,7 +1,7 @@
-// Definir la variable juegos a nivel global
+
 let juegos = [];
 
-// Función que carga los juegos desde localStorage
+/////////////////Obteniene el Listado de los juegos
 async function obtenerJuegos() {
     const juegosGuardados = localStorage.getItem("juegos");
 
@@ -14,7 +14,7 @@ async function obtenerJuegos() {
                 throw new Error("Error al cargar los juegos");
             }
             juegos = await response.json();
-            localStorage.setItem("juegos", JSON.stringify(juegos)); // Guardar en localStorage
+            localStorage.setItem("juegos", JSON.stringify(juegos)); 
         } catch (error) {
             Swal.fire({
                 title: "Error",
@@ -26,13 +26,13 @@ async function obtenerJuegos() {
     }
 }
 
-// Función para actualizar localStorage y recargar DataTable
+
 function actualizarStorageYTabla() {
     localStorage.setItem("juegos", JSON.stringify(juegos));
     cargarDataTable();
 }
 
-// Función que carga el DataTable
+/////////////////Listado de Juegos en DataTable
 async function cargarDataTable() {
     if (juegos.length === 0) {
         await obtenerJuegos();
@@ -85,7 +85,7 @@ async function cargarDataTable() {
     });
 }
 
-// Función para eliminar un juego
+
 async function eliminarJuego(id) {
     const result = await Swal.fire({
         title: "¿Estás seguro?",
@@ -104,7 +104,7 @@ async function eliminarJuego(id) {
     }
 }
 
-// Función para ver detalles y editar un juego
+
 function verDetalles(id) {
     const juego = juegos.find(j => j.id === id);
 
@@ -120,7 +120,7 @@ function verDetalles(id) {
     document.getElementById("editPrecio").value = juego.precio;
     document.getElementById("editStock").value = juego.stock;
 
-    // Mostrar la imagen actual
+    
     const imgPreview = document.getElementById("editImagenPreview");
     imgPreview.src = juego.imagen ? juego.imagen : "./img/default.jpg";
 
@@ -129,7 +129,7 @@ function verDetalles(id) {
 }
 
 
-// Función para guardar la edición del juego
+/////////////////Evento al usar form EditarJuego
 document.getElementById("formEditarJuego").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -142,7 +142,7 @@ document.getElementById("formEditarJuego").addEventListener("submit", function (
 
     const index = juegos.findIndex(j => j.id === id);
     if (index !== -1) {
-        // Obtener la imagen actual
+        
         const nuevaImagen = document.getElementById("editImagen").files[0];
         if (nuevaImagen) {
             const reader = new FileReader();
@@ -155,20 +155,20 @@ document.getElementById("formEditarJuego").addEventListener("submit", function (
                     plataforma,
                     precio,
                     stock,
-                    imagen: reader.result // Guardar la nueva imagen en Base64
+                    imagen: reader.result 
                 };
 
                 actualizarStorageYTabla();
                 cerrarModalEdicion();
             };
         } else {
-            // Si no se cambia la imagen, mantener la actual
             juegos[index] = { id, titulo, descripcion, plataforma, precio, stock, imagen: juegos[index].imagen };
             actualizarStorageYTabla();
             cerrarModalEdicion();
         }
     }
 });
+
 
 function cerrarModalEdicion() {
     let modal = bootstrap.Modal.getInstance(document.getElementById("modalEditarJuego"));
@@ -177,7 +177,6 @@ function cerrarModalEdicion() {
 }
 
 
-// Función para añadir un nuevo juego
 function añadirJuego() {
     const titulo = document.getElementById("titulo").value;
     const descripcion = document.getElementById("descripcion").value;
@@ -198,11 +197,11 @@ function añadirJuego() {
         return;
     }
 
-    // Convertir imagen a Base64
+    
     const reader = new FileReader();
     reader.readAsDataURL(imagenFile);
     reader.onload = function () {
-        const imagenBase64 = reader.result; // Aquí obtenemos la imagen en Base64
+        const imagenBase64 = reader.result; 
 
         let nuevoId = juegos.length > 0 ? Math.max(...juegos.map(j => j.id)) + 1 : 1;
 
@@ -225,5 +224,5 @@ function añadirJuego() {
 }
 
 
-// Cargar juegos y la tabla al iniciar
+/////////////////Evento que lista los datos
 document.addEventListener("DOMContentLoaded", cargarDataTable);

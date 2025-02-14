@@ -1,5 +1,6 @@
 
-async function cargarCarritoDataTable() {
+/////////////////Listado de Tabla con Carrito
+function cargarCarritoDataTable() {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     if ($.fn.dataTable.isDataTable("#tabla-carrito")) {
         $("#tabla-carrito").DataTable().clear().destroy();
@@ -67,7 +68,9 @@ async function cargarCarritoDataTable() {
         },
     });
     actualizarTotalCarrito();
+    cargarTotalEnFormulario();  // Agrega esta línea
 }
+
 
 function modificarCantidad(index, cambio) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -96,7 +99,7 @@ function eliminarProducto(index) {
     cargarCarritoDataTable();
 }
 
-// Función para vaciar el carrito completamente
+
 document.getElementById("vaciarCarro").addEventListener("click", function () {
     localStorage.removeItem("carrito");
     cargarCarritoDataTable(); 
@@ -106,32 +109,32 @@ document.getElementById("vaciarCarro").addEventListener("click", function () {
 document.addEventListener("DOMContentLoaded", cargarCarritoDataTable);
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////Finalización de Compra////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", () => {
     const tarjetaInput = document.getElementById("tarjeta");
     tarjetaInput.addEventListener("input", formatearTarjeta);
 });
 
-// Cargar el total en el formulario de compra
+/////////////////Trae los datos del Total en un texto
 function cargarTotalEnFormulario() {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
     document.getElementById("totalCompra").value = `$${total.toFixed(2)}`;
 }
 
-// Procesar la compra con SweetAlert2
+/////////////////Guarda la información en local Storage y deja vacio el carro
 function procesarCompra(event) {
     event.preventDefault();
 
-    // Obtener datos del formulario
+    
     let nombre = document.getElementById("nombre").value;
     let email = document.getElementById("email").value;
     let direccion = document.getElementById("direccion").value;
     let tarjeta = document.getElementById("tarjeta").value;
     let total = document.getElementById("totalCompra").value;
 
-    // Validar nombre (solo letras)
+    
     if (!/^[a-zA-Z\s]+$/.test(nombre)) {
         Swal.fire({
             icon: "error",
@@ -141,7 +144,7 @@ function procesarCompra(event) {
         return;
     }
 
-    // Validar tarjeta de crédito (solo números y 16 dígitos)
+    
     if (!/^\d{16}$/.test(tarjeta.replace(/\s+/g, ''))) {
         Swal.fire({
             icon: "error",
@@ -151,7 +154,7 @@ function procesarCompra(event) {
         return;
     }
 
-    // Obtener carrito
+    
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
     if (carrito.length === 0) {
@@ -163,7 +166,7 @@ function procesarCompra(event) {
         return;
     }
 
-    // Crear objeto de compra
+    
     let compra = {
         nombre,
         email,
@@ -174,21 +177,21 @@ function procesarCompra(event) {
         fecha: new Date().toLocaleString(),
     };
 
-    // Guardar en LocalStorage
+    
     let compras = JSON.parse(localStorage.getItem("compras")) || [];
     compras.push(compra);
     localStorage.setItem("compras", JSON.stringify(compras));
 
-    // Vaciar carrito
+    
     localStorage.removeItem("carrito");
     cargarCarritoDataTable();
     actualizarTotalCarrito();
 
-    // Cerrar el modal
+    
     let modal = bootstrap.Modal.getInstance(document.getElementById("modalCompra"));
     modal.hide();
 
-    // Mostrar mensaje de éxito
+    
     Swal.fire({
         icon: "success",
         title: "¡Compra realizada con éxito!",
@@ -196,14 +199,14 @@ function procesarCompra(event) {
         confirmButtonColor: "#28a745",
     });
 
-    // Resetear formulario
+    
     document.getElementById("formCompra").reset();
 }
 
-// Formatear la tarjeta de crédito con espacios cada 4 dígitos
+
 function formatearTarjeta(event) {
-    let tarjeta = event.target.value.replace(/\D/g, ''); // Elimina todo lo que no sean números
-    tarjeta = tarjeta.replace(/(\d{4})(?=\d)/g, '$1 '); // Añade un espacio cada 4 dígitos
+    let tarjeta = event.target.value.replace(/\D/g, ''); 
+    tarjeta = tarjeta.replace(/(\d{4})(?=\d)/g, '$1 '); 
     event.target.value = tarjeta;
 }
 
